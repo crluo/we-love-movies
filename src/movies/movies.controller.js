@@ -5,19 +5,23 @@ async function isIdValid(req, res, next) {
     const movieId = req.params.movieId;
     const foundMovie = await service.read(movieId);
     if (!foundMovie) {
-        console.log(!foundMovie)
         next({
             status: 404,
-            message: `Movie Id ${movieId} not found.`
+            message: `Movie cannot be found.`
         });
     }
+    res.locals.movieId = movieId
+    res.locals.movie = foundMovie;
     next();
 }
 
 async function read(req, res, next) {
-    const movieId = req.params.movieId;
-    const foundMovie = await service.read(movieId);
-    res.json({ data: foundMovie });
+    res.json({ data: res.locals.movie });
+}
+
+async function readTheaters(req, res, next) {
+    const theaters = await service.readTheaters(res.locals.movieId);
+    res.json({ data: theaters });
 }
 
 async function list(req, res, next) {
@@ -28,5 +32,6 @@ async function list(req, res, next) {
 
 module.exports = {
     read: [ isIdValid, read ],
+    readTheaters: [ isIdValid, readTheaters ],
     list,
 }
