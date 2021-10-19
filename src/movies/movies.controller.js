@@ -10,7 +10,7 @@ async function isIdValid(req, res, next) {
             message: `Movie cannot be found.`
         });
     }
-    res.locals.movieId = movieId
+    res.locals.movieId = movieId;
     res.locals.movie = foundMovie;
     next();
 }
