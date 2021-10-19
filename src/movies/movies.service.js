@@ -17,7 +17,7 @@ const addCritic = mapProperties({
     preferred_name: "critic.preferred_name",
     surname: "critic.surname",
     organization_name: "critic.organization_name",
-})
+});
 
 function readReviews(movieId) {
     return knex("reviews as r")
