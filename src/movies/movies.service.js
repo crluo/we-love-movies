@@ -12,7 +12,6 @@ function list(isShowing) {
         .where({is_showing: true})
         .groupBy("mt.movie_id");
     }
-    console.log(isShowing)
     return knex("movies").select("*");
 }
 

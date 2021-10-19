@@ -1,6 +1,19 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
+async function isIdValid(req, res, next) {
+    const movieId = req.params.movieId;
+    const foundMovie = await service.read(movieId);
+    if (!foundMovie) {
+        console.log(!foundMovie)
+        next({
+            status: 404,
+            message: `Movie Id ${movieId} not found.`
+        });
+    }
+    next();
+}
+
 async function read(req, res, next) {
     const movieId = req.params.movieId;
     const foundMovie = await service.read(movieId);
@@ -14,6 +27,6 @@ async function list(req, res, next) {
 }
 
 module.exports = {
-    read,
+    read: [ isIdValid, read ],
     list,
 }
