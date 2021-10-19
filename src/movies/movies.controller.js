@@ -24,6 +24,11 @@ async function readTheaters(req, res, next) {
     res.json({ data: theaters });
 }
 
+async function readReviews(req, res, next) {
+    const reviews = await service.readReviews(res.locals.movieId);
+    res.json({ data: reviews });
+}
+
 async function list(req, res, next) {
     const isShowing = req.query.is_showing;
     const movies = await service.list(isShowing);
@@ -33,5 +38,6 @@ async function list(req, res, next) {
 module.exports = {
     read: [ isIdValid, read ],
     readTheaters: [ isIdValid, readTheaters ],
+    readReviews: [ isIdValid, readReviews ],
     list,
 }

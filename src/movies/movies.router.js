@@ -6,6 +6,10 @@ router.route("/:movieId/theaters")
   .get(controller.readTheaters)
   .all(methodNotAllowed);
 
+router.route("/:movieId/reviews")
+  .get(controller.readReviews)
+  .all(methodNotAllowed);
+
 router.route("/:movieId")
   .get(controller.read)
   .all(methodNotAllowed);
