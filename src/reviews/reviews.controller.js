@@ -3,7 +3,6 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 /**
  * verifies review id or responds with error if not found
- * 
  */
 async function reviewExists(req, res, next) {
     const reviewId = req.params.reviewId;
