@@ -12,7 +12,7 @@ const addCritic = mapProperties({
 
 /**
  * queries for an individual review
- * @param {String} reviewId 
+ * @param {String} reviewId of review to pull up
  * @returns review with specified review_id
  */
 function read(reviewId) {
