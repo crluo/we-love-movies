@@ -1,3 +1,6 @@
+/**
+ * returns 405 status with error message for unallowed methods
+ */
 function methodNotAllowed(req, res, next) {
     next({
       status: 405,
