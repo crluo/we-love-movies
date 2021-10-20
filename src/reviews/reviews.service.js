@@ -31,7 +31,7 @@ function update(updatedReview) {
 }
 /**
  * adds critic info as a nested object
- * @param {String} reviewId 
+ * @param {String} reviewId of review to add critic info
  * @returns review object with added critic info
  */
 function updateReviewWithCritic(reviewId) {
